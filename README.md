@@ -1,14 +1,14 @@
-## Wordle
+# Wordle
 
-# Dependencies:
+## Dependencies:
 
-split
+### split
 - stack install split
 
-multiset
+### multiset
 - stack install multiset
 
-# Usage:
+## Usage:
 
 The program takes up to 4 arguments detailing the following
 
@@ -20,7 +20,7 @@ The program takes up to 4 arguments detailing the following
 All arguments can be ommited. If there are no known letters in the word a '.' can be used as a replacement.
 
 
-# Full examples:
+## Full examples:
 
 stack run . adieu
 (no known letters and the letters 'a','d','i','e','u' are not in the word)
