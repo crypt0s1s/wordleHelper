@@ -33,12 +33,14 @@ filterWords :: [String] -> [String -> Bool] -> [String]
 filterWords ws conditions = filter (\w -> all (\c -> c w) conditions) ws
 
 parseInput :: [String] -> (String,String,[String],[String])
-parseInput ws = (w0, ws !! 1, posIncluded, posNotIncluded)
+parseInput ws = (w0, w1, posIncluded, posNotIncluded)
                 where
                     posIncluded = splitOn "," $ ws !! 2
                     posNotIncluded = splitOn "," $ ws !! 3
                     w0 | head (head ws) == '.' = ""
                        | otherwise = head ws
+                    w1 | (ws !! 1) == "." = ""
+                       | otherwise = ws !! 1
 
 toConditions :: (String,String,[String],[String]) -> [String -> Bool]
 toConditions (li,lni,pi,pni) = [c1,c2,c3,c4]
