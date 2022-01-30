@@ -37,7 +37,7 @@ parseInput ws = (w0, w1, posIncluded, posNotIncluded)
                 where
                     posIncluded = splitOn "," $ ws !! 2
                     posNotIncluded = splitOn "," $ ws !! 3
-                    w0 | head (head ws) == '.' = ""
+                    w0 | head ws == "." = ""
                        | otherwise = head ws
                     w1 | (ws !! 1) == "." = ""
                        | otherwise = ws !! 1
