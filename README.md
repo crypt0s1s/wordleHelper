@@ -2,6 +2,9 @@
 
 ## Dependencies:
 
+### stack
+- https://docs.haskellstack.org/en/stable/README/
+
 ### split
 - stack install split
 
@@ -9,6 +12,11 @@
 - stack install multiset
 
 ## Usage:
+
+Currently the program has 2 components. A playable version of wordle and a word suggester.
+To swap between these programs comment / uncomment the relavent lines in app/Main.hs.
+
+### Word Suggester:
 
 The program takes up to 4 arguments detailing the following
 
