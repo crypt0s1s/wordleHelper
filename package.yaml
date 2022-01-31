@@ -27,6 +27,9 @@ library:
   dependencies:
   - split
   - multiset
+  - containers
+  - mtl
+  - random
 
 executables:
   wordle-exe:
