@@ -5,7 +5,6 @@ module Game (startGame )
 import Control.Monad.State.Lazy
 import qualified Data.Set as S
 import System.Random
-import Lib
 
 type WordSet = S.Set String
 data Game = Game
@@ -17,19 +16,19 @@ data Game = Game
   }
 
 initialiseGame :: String -> [String] -> Game
-initialiseGame a wordList = Game a "" 0 (S.fromList $ map (take 5) wordList)
+initialiseGame a wordList = Game a "" 0 (S.fromList wordList)
 
 generateRandomWord :: IO String
 generateRandomWord = do
-  validS <- lines <$> readFile "valid_solutions.csv"
+  validS <- words <$> readFile "valid_solutions.csv"
   seed <- newStdGen
   r <- getStdRandom (randomR (0,length validS - 1))
-  return $ take 5 $ validS !! r
+  return $ validS !! r
 
 startGame :: IO ()
 startGame = do
-  validG <- lines <$> readFile "valid_guesses.csv"
-  validS <- lines <$> readFile "valid_solutions.csv"
+  validG <- words <$> readFile "valid_guesses.csv"
+  validS <- words <$> readFile "valid_solutions.csv"
   word <- generateRandomWord
   game <- execStateT playGame (initialiseGame word $ validG ++ validS)
   putStrLn $ "You guessed the word " ++ answer game ++ " in " ++ show (count game) ++ " guesses!"
